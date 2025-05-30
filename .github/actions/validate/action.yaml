@@ -21,6 +21,14 @@ runs:
         terraform_wrapper: false
         terraform_version: ${{ inputs.terraform_cli_versions }}
 
+    - name: Terraform Format diff
+      shell: pwsh
+      run: |
+        terraform `
+        -chdir="${{inputs.root_module_folder_relative_path}}" `
+        fmt `
+        -diff
+
     - name: Terraform Format Check
       shell: pwsh
       run: |
