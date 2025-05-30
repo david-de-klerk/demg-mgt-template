@@ -3,10 +3,10 @@ name: Run Terraform Validate
 description: Run Terraform Validate
 inputs:
   root_module_folder_relative_path:
-    description: 'Root Module Folder Relative Path'
+    description: "Root Module Folder Relative Path"
     required: true
   terraform_cli_version:
-    description: 'Terraform CLI Version'
+    description: "Terraform CLI Version"
     required: true
 
 runs:
@@ -24,10 +24,15 @@ runs:
     - name: Terraform Format Check
       shell: pwsh
       run: |
-        terraform `
-        -chdir="${{inputs.root_module_folder_relative_path}}" `
-        fmt `
-        -check
+        terraform -chdir="${{inputs.root_module_folder_relative_path}}" fmt -check
+
+    #    - name: Terraform Format Check
+    #      shell: pwsh
+    #      run: |
+    #        terraform `
+    #        -chdir="${{inputs.root_module_folder_relative_path}}" `
+    #        fmt `
+    #        -check
 
     - name: Terraform Init
       shell: pwsh
